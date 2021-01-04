@@ -5,11 +5,13 @@
 
 # Step 1:
 # Create dockerpath
-# dockerpath=<your docker ID/path>
+dockerpath=abraam31/udacity-sklearn:latest
 
 # Step 2:  
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
-
+cat temp/password.txt | docker login --username abraam31 --password-stdin
+docker tag udacity-sklearn $dockerpath
 # Step 3:
 # Push image to a docker repository
+docker push $dockerpath

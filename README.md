@@ -1,4 +1,7 @@
-<include a CircleCI status badge, here>
+
+[![abraam31](https://circleci.com/gh/abraam31/udacity-devops-project4.svg?style=svg)](https://app.circleci.com/pipelines/github/abraam31/udacity-devops-project4)
+
+
 
 ## Project Overview
 

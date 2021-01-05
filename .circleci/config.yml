@@ -25,7 +25,7 @@ jobs:
                 name: install dependencies
                 command: |
                     python3 -m venv venv
-                    source venv/bin/activate
+                    . venv/bin/activate
                     make install
                     # Install hadolint
                     wget -O hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
@@ -42,5 +42,5 @@ jobs:
             - run:
                 name: run lint
                 command: |
-                    source venv/bin/activate
+                    . venv/bin/activate
                     make lint 

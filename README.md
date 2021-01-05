@@ -5,41 +5,61 @@
 
 ## Project Overview
 
-In this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. 
+In this project, a flask python application, a ML model used to predict housing prices in Boston according to several features, is deployed on containarized platform (once on docker, another on Kubernetes).
 
-You are given a pre-trained, `sklearn` model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on. You can read more about the data, which was initially taken from Kaggle, on [the data source site](https://www.kaggle.com/c/boston-housing). This project tests your ability to operationalize a Python flask app—in a provided file, `app.py`—that serves out predictions (inference) about housing prices through API calls. This project could be extended to any pre-trained machine learning model, such as those for image recognition and data labeling.
+## Building the Dockerfile which consists of 
+  - Copying the application files on the containers
+  - Installing any needed dependencies to run the application
+  - Expose the needed ports for the app
+  - Any needed commands at the start of the container
+  - All of that is based on a specific image to start from.
+  
+Once the docker image is built from the Dockerfile, it is pushed to a private registry, which will be then used to pull and use the image from.
 
-### Project Tasks
+Then the application is deployed once with Docker, and another in Kubernetes using the kubectl cli. 
 
-Your project goal is to operationalize this working, machine learning microservice using [kubernetes](https://kubernetes.io/), which is an open-source system for automating the management of containerized applications. In this project you will:
-* Test your project code using linting
-* Complete a Dockerfile to containerize this application
-* Deploy your containerized application using Docker and make a prediction
-* Improve the log statements in the source code for this application
-* Configure Kubernetes and create a Kubernetes cluster
-* Deploy a container using Kubernetes and make a prediction
-* Upload a complete Github repo with CircleCI to indicate that your code has been tested
+Also, circleci is used as a Continuous integration tool to validate the source code using hadolint for the Dockerfile and pylint. 
 
-You can find a detailed [project rubric, here](https://review.udacity.com/#!/rubrics/2576/view).
 
-**The final implementation of the project will showcase your abilities to operationalize production microservices.**
-
----
+### Commands to deploy the app
 
 ## Setup the Environment
 
 * Create a virtualenv and activate it
 * Run `make install` to install the necessary dependencies
 
+Instead you can install Docker environment or kubernetes cluster and run the appropriate shell scripts to deploy the app.
+
+### Linting the source code
+* Install hadolint on your server 
+* Run `make lint` to lint your Dockerfile and python application file app.py. (needs to be run after the make install)
+
+
 ### Running `app.py`
 
 1. Standalone:  `python app.py`
 2. Run in Docker:  `./run_docker.sh`
 3. Run in Kubernetes:  `./run_kubernetes.sh`
+4. Test the app and Make a prediction: `./make_prediction.sh`
+
+---
+
 
 ### Kubernetes Steps
 
-* Setup and Configure Docker locally
+** Setup and Configure Docker locally
 * Setup and Configure Kubernetes locally
 * Create Flask app in Container
 * Run via kubectl
+
+
+#files contained in the project
+
+Makefile: contains all needed process/commands create virtual environment to run the app, install dependencies, do the lints and test on the source code using make syntax
+Dockerfile: contains all needed process to containarize the application on a container (simple to run docker build -t <tag_name> #path_to_Dockerfile
+app.py: main python code for oup sklearn application
+requirements.txt: all needed python dependecies to be install via pip
+run_docker.sh: Shell scripts to build your docker image, and run a container with exposed port on the docker host.
+upload_docker.sh: Shell script to upload built docker image on a  docker registry
+run_kubernetes.sh: Shell script to deploy the app on a kubernetes pod, then wait for the pod to be ready and forward the port on the kubernetes node
+make_prediction.sh: Shell script to automate the prediction making.

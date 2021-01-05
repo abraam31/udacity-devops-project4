@@ -33,7 +33,7 @@ jobs:
                     echo $PATH
                     mv hadolint /usr/bin
                     export PATH=$PATH:/usr/bin
-		    echo $PATH
+                    echo $PATH
             - save_cache:
                 paths:
                 - ./venv

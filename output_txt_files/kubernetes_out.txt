@@ -1,1 +1,20 @@
-<paste log output from Kubernetes-mediated prediction, here>
+[root@master-node udacity-devops-project4]# ./run_kubernetes.sh 
+pod/sklearn-dep created
+ 
+NAME          READY   STATUS              RESTARTS   AGE
+sklearn-dep   0/1     ContainerCreating   0          1s
+ 
+waiting for pod to be up.. sleeping then rechecking!!
+ 
+NAME          READY   STATUS    RESTARTS   AGE
+sklearn-dep   1/1     Running   0          11s
+#####################
+ 
+Forwarding the port container..
+Forwarding from 127.0.0.1:8000 -> 80
+Forwarding from [::1]:8000 -> 80
+Handling connection for 8000
+Handling connection for 8000
+Handling connection for 8000
+Handling connection for 8000
+

@@ -33,5 +33,5 @@ jobs:
           command: |
             . venv/bin/activate
             #make lint
-            hadolint --ignore DL3003 Dockerfile
+            hadolint --ignore DL3013 Dockerfile
             pylint --disable=R,C,W1203,W1202,W1309 app.py

@@ -21,9 +21,9 @@ Then the application is deployed once with Docker, and another in Kubernetes usi
 Also, circleci is used as a Continuous integration tool to validate the source code using hadolint for the Dockerfile and pylint. 
 
 
-### Commands to deploy the app
+## Commands to deploy the app
 
-## Setup the Environment
+### Setup the Environment
 
 * Create a virtualenv and activate it
 * Run `make install` to install the necessary dependencies
@@ -53,13 +53,13 @@ Instead you can install Docker environment or kubernetes cluster and run the app
 * Run via kubectl
 
 
-#files contained in the project
+### files contained in the project
 
-Makefile: contains all needed process/commands create virtual environment to run the app, install dependencies, do the lints and test on the source code using make syntax
-Dockerfile: contains all needed process to containarize the application on a container (simple to run docker build -t <tag_name> #path_to_Dockerfile
-app.py: main python code for oup sklearn application
-requirements.txt: all needed python dependecies to be install via pip
-run_docker.sh: Shell scripts to build your docker image, and run a container with exposed port on the docker host.
-upload_docker.sh: Shell script to upload built docker image on a  docker registry
-run_kubernetes.sh: Shell script to deploy the app on a kubernetes pod, then wait for the pod to be ready and forward the port on the kubernetes node
-make_prediction.sh: Shell script to automate the prediction making.
+- Makefile: contains all needed process/commands create virtual environment to run the app, install dependencies, do the lints and test on the source code using make syntax
+- Dockerfile: contains all needed process to containarize the application on a container (simple to run docker build -t <tag_name> #path_to_Dockerfile
+- app.py: main python code for oup sklearn application
+- requirements.txt: all needed python dependecies to be install via pip
+- run_docker.sh: Shell scripts to build your docker image, and run a container with exposed port on the docker host.
+- upload_docker.sh: Shell script to upload built docker image on a  docker registry
+- run_kubernetes.sh: Shell script to deploy the app on a kubernetes pod, then wait for the pod to be ready and forward the port on the kubernetes node
+- make_prediction.sh: Shell script to automate the prediction making.

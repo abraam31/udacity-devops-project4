@@ -30,5 +30,5 @@ done
 # Forward the container port to a host
 echo "Forwarding the port container.."
 kubectl port-forward sklearn-dep 8000:80
-
+kubectl logs sklearn-dep
 
